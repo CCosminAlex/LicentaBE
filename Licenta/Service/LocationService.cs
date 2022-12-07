@@ -41,5 +41,17 @@ namespace Licenta.Service
             }
             return result;
         }
+
+        public void Delete(Guid id)
+        {
+            locationRepository.Delete(id);
+        }
+
+        public void Edit(LocationDto locationDto)
+        {
+            var location = new Location() {  City = locationDto.City, Number = locationDto.Number, LocationId=locationDto.Id, Street=locationDto.Street,
+          Date=locationDto.Date};
+            locationRepository.Edit(location);
+        }
     }
 }

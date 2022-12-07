@@ -42,14 +42,16 @@ namespace Licenta.Controllers
 
         // PUT api/<VoluntaryController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(Guid id, [FromBody] VoluntaryDto voluntaryDto) 
         {
+            voluntaryService.Edit(voluntaryDto);
         }
 
         // DELETE api/<VoluntaryController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
+            voluntaryService.Delete(id);
         }
     }
 }

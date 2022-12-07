@@ -40,5 +40,16 @@ namespace Licenta.Service
             }
             return result;
         }
+
+        public void Delete(Guid id)
+        {
+            voluntaryRepository.Delete(id);
+        }
+
+        public void Edit(VoluntaryDto voluntaryDto)
+        {
+            var voluntary = new Voluntary() { Location = voluntaryDto.Location, Reward = voluntaryDto.Reward, Name = voluntaryDto.Name, Id = voluntaryDto.Id };
+            voluntaryRepository.Edit(voluntary);
+        }
     }
 }
