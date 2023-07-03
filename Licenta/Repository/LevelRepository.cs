@@ -41,10 +41,5 @@ namespace Licenta.Repository
             applicationDbContext.Levels.Update(edit);
             applicationDbContext.SaveChanges();
         }
-
-        internal static object FirstOrDefault(Func<object, bool> value)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

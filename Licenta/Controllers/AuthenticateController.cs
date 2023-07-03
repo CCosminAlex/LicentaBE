@@ -64,6 +64,7 @@ namespace Licenta.Controllers
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                     );
 
+
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),

@@ -56,5 +56,9 @@ namespace Licenta.Repository
             dbContext.Voluntarys.Remove(voluntary);
             dbContext.SaveChanges();
         }
+        public int GetRewardByID(Guid id)
+        {
+            return dbContext.Voluntarys.FirstOrDefault(v => v.Id == id).Reward;
+        }
     }
 }

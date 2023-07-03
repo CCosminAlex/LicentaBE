@@ -53,5 +53,12 @@ namespace Licenta.Controllers
         {
             voluntaryService.Delete(id);
         }
+
+        [HttpPost("apply")]
+        public void Apply([FromBody] UserVoluntaryDTO userVoluntaryDTO)
+        {
+            voluntaryService.Apply(userVoluntaryDTO);
+        }
+
     }
 }

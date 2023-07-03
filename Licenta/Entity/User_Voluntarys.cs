@@ -8,7 +8,8 @@ namespace Licenta.Entity
     {
         [Key]
         public Guid Id { get; set; }
-        public Users Volunteer { get; set; }
-        public Voluntary Voluntary { get; set; }
+        public Guid VolunteerID { get; set; }
+        public Guid VoluntaryID { get; set; }
+        public bool IsRewarded { get; set; }
     }
 }
