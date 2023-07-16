@@ -13,5 +13,11 @@ namespace Licenta.Entity.DTO
 
         [Required(ErrorMessage = "Error Location is required")]
         public Location Location { get; set; }
+
+        public string StartDate { get; set; }
+
+        public string EndDate { get; set; }
+
+        public string Description { get; set; }
     }
 }

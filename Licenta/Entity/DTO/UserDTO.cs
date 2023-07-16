@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Licenta.Entity
+﻿namespace Licenta.Entity.DTO
 {
-    public class Users
+    public class UserDTO
     {
-        public Guid ID { get; set; }
+        public Guid? ID { get; set; }
 
         public string Sub_ID { get; set; }
 
@@ -20,5 +18,6 @@ namespace Licenta.Entity
 
         public int Score { get; set; }
 
+       
     }
 }

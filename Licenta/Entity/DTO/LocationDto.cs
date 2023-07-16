@@ -13,8 +13,8 @@ namespace Licenta.Entity.DTO
         [Required(ErrorMessage = "Error Number is required")]
 
         public int Number { get; set; }
-        [Required(ErrorMessage = "Error Date is required")]
-        public DateTime Date { get; set; }
+        
+       
 
     }
 }

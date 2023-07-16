@@ -34,7 +34,7 @@ namespace Licenta.Repository
 
         public void Edit( Level level)
         {
-            var edit =applicationDbContext.Levels.FirstOrDefault(x => x.Id == level.Id);    
+            var edit = applicationDbContext.Levels.FirstOrDefault(x => x.Id == level.Id);    
             edit.Scor_start=level.Scor_start;
             edit.Scor_end=level.Scor_end;
             edit.Name=level.Name;

@@ -14,9 +14,9 @@ namespace Licenta.Repository
             this.dbContext = dbContext;
 
         }
-        public void Create(Voluntary voluntary, string CompanyId)
+        public void Create(Voluntary voluntary, Guid CompanyId)
         {
-            var Company = dbContext.Users.FirstOrDefault(x => x.Id == CompanyId);
+            var Company = dbContext.Users.FirstOrDefault(x => x.ID == CompanyId);
             var location = dbContext.Locations.FirstOrDefault(x => x.LocationId == voluntary.Location.LocationId);
             voluntary.Location = location;
             voluntary.Company = Company;
@@ -28,9 +28,9 @@ namespace Licenta.Repository
             return dbContext.Voluntarys.Include(x=>x.Location).ToList();
 
         }
-        public List<Voluntary> GetComapnyVoluntarys(string CompanyId)
+        public List<Voluntary> GetComapnyVoluntarys(Guid CompanyId)
         {
-            return dbContext.Voluntarys.Where(x => x.Company.Id == CompanyId).ToList();
+            return dbContext.Voluntarys.Where(x => x.Company.ID == CompanyId).ToList();
 
         }
         //for edit

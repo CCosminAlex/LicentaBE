@@ -4,7 +4,7 @@
 
 namespace Licenta.Migrations
 {
-    public partial class @virtual : Migration
+    public partial class Users4 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

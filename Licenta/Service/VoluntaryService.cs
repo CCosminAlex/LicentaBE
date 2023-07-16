@@ -9,25 +9,31 @@ namespace Licenta.Service
     {
         private readonly VoluntaryRepository voluntaryRepository;
         private readonly UserVolutaryRepository userVolutaryRepository;
+        private readonly UserRepository userRepository;
 
         public VoluntaryService(ApplicationDbContext applicationDbContext)
         {
             voluntaryRepository = new VoluntaryRepository(applicationDbContext);
             userVolutaryRepository = new UserVolutaryRepository(applicationDbContext);
+            userRepository = new UserRepository(applicationDbContext);
         }
 
         public void Create(VoluntaryDto voluntaryDto, string CompanyId)
         {
-
+            var Company = userRepository.GetUser(CompanyId);
+            
             Voluntary voluntary = new Voluntary()
             {
                 Id = Guid.NewGuid(),
                 Reward = voluntaryDto.Reward,
                 Name = voluntaryDto.Name,
-                Location = voluntaryDto.Location
+                Location = voluntaryDto.Location,
+                 StartDate = voluntaryDto.StartDate,
+                  EndDate = voluntaryDto.EndDate,
+                   Description = voluntaryDto.Description
             };
 
-            voluntaryRepository.Create(voluntary, CompanyId);
+            voluntaryRepository.Create(voluntary, Company.ID);
 
 
         }
@@ -50,7 +56,7 @@ namespace Licenta.Service
 
         public void Edit(VoluntaryDto voluntaryDto)
         {
-            var voluntary = new Voluntary() { Location = voluntaryDto.Location, Reward = voluntaryDto.Reward, Name = voluntaryDto.Name, Id = voluntaryDto.Id };
+            var voluntary = new Voluntary() { Location = voluntaryDto.Location, Reward = voluntaryDto.Reward, Name = voluntaryDto.Name, Id = voluntaryDto.Id, StartDate = voluntaryDto.StartDate, EndDate = voluntaryDto.EndDate, Description = voluntaryDto.Description };
             voluntaryRepository.Edit(voluntary);
         }
 

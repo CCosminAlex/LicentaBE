@@ -14,7 +14,7 @@ namespace Licenta.Controllers
     public class VoluntaryController : ControllerBase
     {
         private readonly VoluntaryService voluntaryService;
-        
+
         public VoluntaryController(ApplicationDbContext dbContext)
         {
             voluntaryService = new VoluntaryService(dbContext);
@@ -34,10 +34,10 @@ namespace Licenta.Controllers
         }
 
         // POST api/<VoluntaryController>
-        [HttpPost]
-        public void Post([FromBody] VoluntaryDto voluntaryDto, string CompanyId)
+        [HttpPost("{id}")]
+        public void Post([FromBody] VoluntaryDto voluntaryDto, string id)
         {
-            voluntaryService.Create(voluntaryDto, CompanyId);
+            voluntaryService.Create(voluntaryDto, id);
         }
 
         // PUT api/<VoluntaryController>/5

@@ -35,7 +35,6 @@ namespace Licenta.Repository
             editLocation.Street = location.Street;
             editLocation.City = location.City;
             editLocation.Number = location.Number;
-            editLocation.Date = location.Date;
           
             dbContext.Locations.Update(editLocation);
             dbContext.SaveChanges();

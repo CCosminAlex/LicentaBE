@@ -20,7 +20,6 @@ namespace Licenta.Service
             Location location = new Location()
             {
                 LocationId = Guid.NewGuid(),
-                Date = locationDto.Date,
                 City = locationDto.City,
                 Street= locationDto.Street,
                 Number =locationDto.Number
@@ -37,7 +36,7 @@ namespace Licenta.Service
             List<LocationDto> result = new List<LocationDto>();
             foreach (Location Location in locations)
             {
-                result.Add(new LocationDto() { City = Location.City, Street = Location.Street, Number = Location.Number, Date=Location.Date, Id=Location.LocationId });
+                result.Add(new LocationDto() { City = Location.City, Street = Location.Street, Number = Location.Number, Id=Location.LocationId });
             }
             return result;
         }
@@ -49,8 +48,7 @@ namespace Licenta.Service
 
         public void Edit(LocationDto locationDto)
         {
-            var location = new Location() {  City = locationDto.City, Number = locationDto.Number, LocationId=locationDto.Id, Street=locationDto.Street,
-          Date=locationDto.Date};
+            var location = new Location() {  City = locationDto.City, Number = locationDto.Number, LocationId=locationDto.Id, Street=locationDto.Street};
             locationRepository.Edit(location);
         }
     }
