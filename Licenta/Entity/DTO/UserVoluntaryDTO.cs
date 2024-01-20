@@ -4,6 +4,6 @@
     {
         public Guid VoluntaryID { get; set; } 
 
-        public Guid VolunteerID { get; set; }
+        public string VolunteerID { get; set; }
     }
 }

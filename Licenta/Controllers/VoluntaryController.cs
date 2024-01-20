@@ -28,9 +28,15 @@ namespace Licenta.Controllers
 
         // GET api/<VoluntaryController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Voluntary Get(Guid id)
         {
-            return "value";
+            return voluntaryService.FindById(id);
+        }
+
+        [HttpGet("search")]
+        public IEnumerable<VoluntaryDto> SearchVol(string? name, Guid? city, DateTime? date)
+        {
+            return voluntaryService.Search(name, city, date);
         }
 
         // POST api/<VoluntaryController>

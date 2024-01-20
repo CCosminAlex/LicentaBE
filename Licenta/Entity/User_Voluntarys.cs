@@ -11,5 +11,7 @@ namespace Licenta.Entity
         public Guid VolunteerID { get; set; }
         public Guid VoluntaryID { get; set; }
         public bool IsRewarded { get; set; }
+
+        public bool IsAccepted { get; set; }
     }
 }

@@ -44,7 +44,25 @@ namespace Licenta.Service
             List<VoluntaryDto> result = new List<VoluntaryDto>();
             foreach(Voluntary voluntary in voluntaries)
             {
-                result.Add(new VoluntaryDto() {Id=voluntary.Id, Location = voluntary.Location, Name=voluntary.Name, Reward=voluntary.Reward });
+                result.Add(new VoluntaryDto() {Id=voluntary.Id, Location = voluntary.Location, Name=voluntary.Name, Reward=voluntary.Reward, StartDate=voluntary.StartDate, EndDate=voluntary.EndDate, Description=voluntary.Description });
+            }
+            return result;
+        }
+        public Voluntary FindById(Guid id)
+        {
+            var voluntary = voluntaryRepository.GetById(id);
+
+            return voluntary;
+
+        }
+
+        public List<VoluntaryDto> Search(string name, Guid? city, DateTime? startDate)
+        {
+            var voluntaries = voluntaryRepository.SearchVoluntarys(startDate, city, name);
+            List<VoluntaryDto> result = new List<VoluntaryDto>();
+            foreach (Voluntary voluntary in voluntaries)
+            {
+                result.Add(new VoluntaryDto() { Id = voluntary.Id, Location = voluntary.Location, Name = voluntary.Name, Reward = voluntary.Reward, StartDate = voluntary.StartDate, EndDate = voluntary.EndDate, Description = voluntary.Description });
             }
             return result;
         }
@@ -57,12 +75,13 @@ namespace Licenta.Service
         public void Edit(VoluntaryDto voluntaryDto)
         {
             var voluntary = new Voluntary() { Location = voluntaryDto.Location, Reward = voluntaryDto.Reward, Name = voluntaryDto.Name, Id = voluntaryDto.Id, StartDate = voluntaryDto.StartDate, EndDate = voluntaryDto.EndDate, Description = voluntaryDto.Description };
-            voluntaryRepository.Edit(voluntary);
+            voluntaryRepository.Edit(voluntary);    
         }
 
         public void Apply(UserVoluntaryDTO applyVoluntaryDto)
         {
-            userVolutaryRepository.Create(new User_Voluntarys { Id = Guid.NewGuid(), VoluntaryID = applyVoluntaryDto.VoluntaryID, VolunteerID = applyVoluntaryDto.VolunteerID });
+            var volunteer = userRepository.GetUser(applyVoluntaryDto.VolunteerID);
+            userVolutaryRepository.Create(new User_Voluntarys { Id = Guid.NewGuid(), VoluntaryID = applyVoluntaryDto.VoluntaryID, VolunteerID = volunteer.ID });
         }
 
         public int GetReward(Guid userID)
