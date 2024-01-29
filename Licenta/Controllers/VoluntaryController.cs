@@ -66,5 +66,12 @@ namespace Licenta.Controllers
             voluntaryService.Apply(userVoluntaryDTO);
         }
 
+        // GET api/<VoluntaryController>/5
+        [HttpGet("company/{id}")]
+        public IEnumerable<VoluntaryDto> GetByCompany(string id)
+        {
+            return voluntaryService.FindByCompanyId(id);
+        }
+
     }
 }

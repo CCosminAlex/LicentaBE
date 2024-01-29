@@ -1,4 +1,5 @@
 ﻿using Licenta.Entity;
+using Licenta.Entity.DTO;
 using Licenta.Helper;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
@@ -91,6 +92,11 @@ namespace Licenta.Repository
         public int GetRewardByID(Guid id)
         {
             return dbContext.Voluntarys.FirstOrDefault(v => v.Id == id).Reward;
+        }
+
+        public List<Voluntary> FindByCompanyId(string id)
+        {
+            return dbContext.Voluntarys.Include(x => x.Company).Include(z => z.Location).Where(y => y.Company.Sub_ID == id).ToList();
         }
     }
 }

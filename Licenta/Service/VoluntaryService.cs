@@ -98,5 +98,16 @@ namespace Licenta.Service
 
         }
 
+       public List<VoluntaryDto> FindByCompanyId(string id)
+        {
+            var voluntaries = voluntaryRepository.FindByCompanyId(id);
+            List<VoluntaryDto> result = new List<VoluntaryDto>();
+            foreach (Voluntary voluntary in voluntaries)
+            {
+                result.Add(new VoluntaryDto() { Id = voluntary.Id, Location = voluntary.Location, Name = voluntary.Name, Reward = voluntary.Reward, StartDate = voluntary.StartDate, EndDate = voluntary.EndDate, Description = voluntary.Description });
+            }
+            return result;
+        }
+
     }
 }
