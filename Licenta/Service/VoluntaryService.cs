@@ -72,9 +72,9 @@ namespace Licenta.Service
             voluntaryRepository.Delete(id);
         }
 
-        public void Edit(VoluntaryDto voluntaryDto)
+        public void Edit(VoluntaryDto voluntaryDto, Guid id)
         {
-            var voluntary = new Voluntary() { Location = voluntaryDto.Location, Reward = voluntaryDto.Reward, Name = voluntaryDto.Name, Id = voluntaryDto.Id, StartDate = voluntaryDto.StartDate, EndDate = voluntaryDto.EndDate, Description = voluntaryDto.Description };
+            var voluntary = new Voluntary() { Location = voluntaryDto.Location, Reward = voluntaryDto.Reward, Name = voluntaryDto.Name, Id = id, StartDate = voluntaryDto.StartDate, EndDate = voluntaryDto.EndDate, Description = voluntaryDto.Description };
             voluntaryRepository.Edit(voluntary);    
         }
 

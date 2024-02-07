@@ -74,10 +74,13 @@ namespace Licenta.Repository
 
         public void Edit(Voluntary voluntary)
         {
-            var newVoluntary = dbContext.Voluntarys.FirstOrDefault(x => x.Id == voluntary.Id);
+            var newVoluntary = dbContext.Voluntarys.Include(y => y.Company).FirstOrDefault(x => x.Id == voluntary.Id);
             var oldLocation = dbContext.Locations.FirstOrDefault(x => x.LocationId == voluntary.Location.LocationId);
             newVoluntary.Reward = voluntary.Reward;
             newVoluntary.Location = oldLocation;
+            newVoluntary.StartDate = voluntary.StartDate;
+            newVoluntary.EndDate = voluntary.EndDate;
+            newVoluntary.Description = voluntary.Description;
             newVoluntary.Name = voluntary.Name;
             dbContext.Voluntarys.Update(newVoluntary);
             dbContext.SaveChanges();
